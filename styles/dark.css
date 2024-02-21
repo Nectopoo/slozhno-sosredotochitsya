@@ -9,4 +9,27 @@
     Так стили написанные ниже будут иметь больший вес,
     чем стили в медиазапросе предпочтений пользователя
   */
+    background-color: var(--main-theme-color);
+    color: var(--main-color);
+}
+
+.header__rec-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.header__rec-label:before {
+    content: "Rec";
+    color: var(--alter-color);
+    text-transform: uppercase;
+    padding-right: 10px;
+}
+
+.header__rec-label::after {
+    content: "\B7";
+    padding-right: 7px;
+    color: var(--alter-color);
+    /*clip-path: ellipse(3px 3px); //todo*/
+    /*box-shadow: 0 0 9px ;*/
 }

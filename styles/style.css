@@ -1,5 +1,184 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
+@import url(fonts/fonts.css);
+
 
 .page {
-  /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+    /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 130% */
+    background-image: var(--cover-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 10px 10px;
+}
+
+.header, footer {
+    display: grid;
+    /*position: relative;*/
+
+    /*padding-bottom: 75px;*/
+    /*margin-bottom: 10px;*/
+    /*grid-auto-flow: row;*/
+    /*justify-content: space-around;*/
+}
+
+.decorated-zone {
+    /*display: grid;*/
+    position: relative;
+
+}
+
+.decorated-zone::before {
+    content: '';
+    position: absolute;
+    border-top: solid 1px var(--alter-color);
+    border-right: solid 1px var(--alter-color);
+    width: 25px;
+    height: 25px;
+    top: 0;
+    right: 0;
+}
+
+.decorated-zone::after {
+    content: '';
+    position: absolute;
+    border-bottom: solid 1px var(--alter-color);
+    border-left: solid 1px var(--alter-color);
+    width: 25px;
+    height: 25px;
+    bottom: 0;
+    left: 0;
+}
+
+.header__theme-menu {
+    /*margin-top: 65px;*/
+    position: relative;
+    margin-bottom: 65px;
+}
+
+.header__theme-menu-list {
+    padding-top: 65px;
+    display: grid;
+    justify-content: end;
+    gap: 10px;
+}
+
+/*.header__theme-menu-item {*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+.header__theme-menu-button {
+    /*padding: 1px 13px;*/
+    width: 70px;
+    height: 26px;
+    box-sizing: border-box;
+    text-transform: lowercase;
+    text-align: center;
+    vertical-align: middle;
+    color: var(--alter-color);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.header__theme-menu-button_active {
+    outline: solid 1px var(--alter-color);
+    pointer-events: none;
+}
+
+.header__theme-menu-button:hover {
+    border: solid 1px var(--alter-translucent-color);
+    /*filter: drop-shadow(-1px 1px 1px rgba(0, 0, 0, 0.25));*/
+}
+
+.header__theme-menu-button:focus-visible {
+    border-style: none;
+    border-bottom: solid 1px var(--alter-color);
+    outline: none;
+}
+
+.focus-logo {
+    position: relative;
+    color: var(--main-logo-font-color);
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+    font-weight: bold;
+    line-height: 82.5%;
+    text-shadow: 4px 4px 0 var(--accent-color);
+    text-align: start;
+    vertical-align: center;
+}
+
+.header__text {
+    position: relative;
+    margin-top: 55px;
+    margin-bottom: 55px;
+    font-weight: bold;
+}
+
+.title-decor {
+    background-color: var(--alter-color);
+    color: var(--main-theme-color);
+}
+
+.main {
+    display: grid;
+    margin-top: 40px;
+}
+
+.main__section {
+    margin-bottom: 50px;
+}
+
+.main__section:last-child {
+    margin-bottom: 40px;
+}
+
+.main__chapter-header {
+    margin-bottom: 20px;
+}
+
+.main__chapter-header {
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--alter-color);
+}
+
+.main__article {
+    margin-bottom: 20px;
+}
+
+.main__article-header {
+    margin-bottom: 10px;
+}
+
+.main__article-subheader {
+    font-weight: normal;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.main__article-text {
+    /*margin-top: 10px;*/
+}
+
+.main__section__image-container {
+    display: grid;
+    row-gap: 10px;
+}
+
+.main__section__image {
+    /*object-fit: contain;*/
+    width: 100%;
+}
+
+.footer {
+    text-align: center;
+    vertical-align: center;
 }
