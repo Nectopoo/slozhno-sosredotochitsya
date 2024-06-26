@@ -13,6 +13,23 @@
     color: var(--main-color);
 }
 
+.link {
+    display: inline-block;
+    text-decoration: none;
+    text-shadow: 1.5px 2px var(--accent-color);
+    line-height: 18px;
+}
+
+.link:hover {
+    border-bottom: solid 1px var(--main-color);
+}
+
+.link:focus {
+    outline: solid 1px var(--main-color);
+    outline-offset: 1px;
+    border: none;
+}
+
 .header__rec-label {
     position: absolute;
     top: 0;
@@ -21,15 +38,25 @@
 
 .header__rec-label:before {
     content: "Rec";
+    position: absolute;
+    top: 0;
+    right: 28px;
     color: var(--alter-color);
     text-transform: uppercase;
-    padding-right: 10px;
+    line-height: 25px;
+    vertical-align: top;
+    text-align: center;
 }
 
 .header__rec-label::after {
-    content: "\B7";
-    padding-right: 7px;
-    color: var(--alter-color);
-    /*clip-path: ellipse(3px 3px); //todo*/
-    /*box-shadow: 0 0 9px ;*/
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: 9px;
+    width: 9px;
+    height: 9px;
+    border: 1px solid var(--alter-color);
+    background-color: var(--alter-color);
+    border-radius: 50%;
+    box-shadow: 0 0 5px 3px var(--alter-color);
 }
