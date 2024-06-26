@@ -13,23 +13,6 @@
     color: var(--main-color);
 }
 
-.link {
-    display: inline-block;
-    text-decoration: none;
-    text-shadow: 1.5px 2px var(--accent-color);
-    line-height: 18px;
-}
-
-.link:hover {
-    border-bottom: solid 1px var(--main-color);
-}
-
-.link:focus {
-    outline: solid 1px var(--main-color);
-    outline-offset: 1px;
-    border: none;
-}
-
 .header__rec-label {
     position: absolute;
     top: 0;
