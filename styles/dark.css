@@ -4,42 +4,87 @@
   переключая тему
 */
 
+:root .theme_dark {
+    --menu-color: rgb(255, 0, 112);
+    --menu-translucent-color: rgba(255, 0, 112, 0.4);
+    --link-shadow-color: rgb(255, 0, 112);
+    --logo-color: rgb(219, 0, 255);
+    --logo-shadow-color: rgb(255, 0, 112);
+    --article-header-font-color: rgb(255, 0, 112);
+    --header-font-color: rgb(0, 0, 40);
+    --header-background-color: rgb(255, 0, 112);
+    --text-main-color: rgb(241, 178, 206);
+    --main-theme-color: rgb(0, 0, 40);
+    --cover-image: url(../images/cover-image-dark.png);
+}
+
 .page.theme_dark {
   /* сохраните этот селектор в приведённом виде.
     Так стили написанные ниже будут иметь больший вес,
     чем стили в медиазапросе предпочтений пользователя
   */
-    background-color: var(--main-theme-color);
-    color: var(--main-color);
 }
 
-.header__rec-label {
+.theme_dark .header__rec-label {
     position: absolute;
     top: 0;
     right: 0;
 }
 
-.header__rec-label:before {
+.theme_dark .header__rec-label:before {
     content: "Rec";
     position: absolute;
     top: 0;
     right: 28px;
-    color: var(--alter-color);
+    color: var(--menu-color);
     text-transform: uppercase;
     line-height: 25px;
     vertical-align: top;
     text-align: center;
 }
 
-.header__rec-label::after {
+.theme_dark .header__rec-label::after {
     content: "";
     position: absolute;
     top: 8px;
     right: 9px;
     width: 9px;
     height: 9px;
-    border: 1px solid var(--alter-color);
-    background-color: var(--alter-color);
+    border: 1px solid var(--menu-color);
+    background-color: var(--menu-color);
     border-radius: 50%;
-    box-shadow: 0 0 5px 3px var(--alter-color);
+    box-shadow: 0 0 5px 3px var(--menu-color);
+}
+
+@media (prefers-color-scheme: dark) {
+    .theme_auto .header__rec-label {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .theme_auto .header__rec-label:before {
+        content: "Rec";
+        position: absolute;
+        top: 0;
+        right: 28px;
+        color: var(--menu-color);
+        text-transform: uppercase;
+        line-height: 25px;
+        vertical-align: top;
+        text-align: center;
+    }
+
+    .theme_auto .header__rec-label::after {
+        content: "";
+        position: absolute;
+        top: 8px;
+        right: 9px;
+        width: 9px;
+        height: 9px;
+        border: 1px solid var(--menu-color);
+        background-color: var(--menu-color);
+        border-radius: 50%;
+        box-shadow: 0 0 5px 3px var(--menu-color);
+    }
 }
