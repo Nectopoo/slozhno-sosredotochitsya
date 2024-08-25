@@ -15,4 +15,7 @@
     --text-main-color: rgb(241, 178, 206);
     --main-theme-color: rgb(0, 0, 40);
     --cover-image: url(../images/cover-image-dark.png);
+
+    --paddings-mobile: 10px;
+    --paddings-tablet: 20px;
 }

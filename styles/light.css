@@ -25,6 +25,10 @@
   */
 }
 
+.theme_light .header__rec-label {
+    position: absolute;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --menu-color: rgb(53, 52, 48);
@@ -38,5 +42,13 @@
         --text-main-color: rgb(53, 52, 48);
         --main-theme-color: rgb(255, 241, 247);
         --cover-image: url(../images/cover-image-light.png);
+
+
+    }
+
+    .theme_auto .header__rec-label {
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-end: 0;
     }
 }

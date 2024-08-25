@@ -3,12 +3,13 @@
 
 .page {
     /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+    z-index: 10;
     font-family: "IBM Plex Mono", monospace;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: 23.4px; /* 130% */
-    padding: 0 10px;
+    padding: 0 var(--paddings-mobile);
     position: relative;
     width: 100%;
 
@@ -17,6 +18,7 @@
 }
 
 .page:before {
+    z-index: -1;
     content: "";
     background-image: var(--cover-image);
     background-attachment: fixed;
@@ -24,56 +26,61 @@
     background-position: center;
     background-repeat: no-repeat;
     position: absolute;
-    top: -10px;
-    bottom: -10px;
-    left: 0;
-    right: 0;
+    inset-block-start: 0;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
     opacity: 0.5;
 }
 
 .header, .footer {
+    z-index: 10;
     display: flex;
+    position: relative;
     flex-direction: column;
+    justify-content: space-between;
     position: relative;
     height: 100vh;
-    margin: 10px 0;
+    margin: var(--paddings-mobile) 0;
+    flex: 1 0 auto;
 }
 
 .decorated-zone {
     /*display: grid;*/
     position: relative;
-    height: calc(100vh - 20px);
+    height: calc(100vh - calc(2 * var(--paddings-mobile)));
     /*margin: 10px 0;*/
 }
 
 .decorated-zone::before {
     content: '';
     position: absolute;
-    border-top: solid 1px var(--menu-color);
-    border-right: solid 1px var(--menu-color);
+    border-block-start: solid 1px var(--menu-color);
+    border-inline-end: solid 1px var(--menu-color);
     width: 25px;
     height: 25px;
-    top: 0;
-    right: 0;
+    inset-block-start: 0;
+    inset-inline-end: 0;
 }
 
 .decorated-zone::after {
     content: '';
     position: absolute;
-    border-bottom: solid 1px var(--menu-color);
-    border-left: solid 1px var(--menu-color);
+    border-block-end: solid 1px var(--menu-color);
+    border-inline-start: solid 1px var(--menu-color);
     width: 25px;
     height: 25px;
-    bottom: 0;
-    left: 0;
+    inset-block-end: 0;
+    inset-inline-start: 0;
 }
 
 .header__theme-menu {
     position: relative;
+    z-index: 10;
 }
 
 .header__theme-menu-list {
-    padding-top: 65px;
+    padding-block-start: 65px;
     display: grid;
     justify-content: end;
     gap: 10px;
@@ -83,7 +90,7 @@
     width: 70px;
     height: 26px;
     line-height: 18px;
-    padding-bottom: 4.3px;
+    padding-block-end: 4.3px;
     text-transform: lowercase;
     text-align: center;
     vertical-align: top;
@@ -106,28 +113,33 @@
 
 .header__theme-menu-button:focus-visible {
     border-style: none;
-    border-bottom: solid 1px var(--menu-color);
+    border-block-end: solid 1px var(--menu-color);
     outline: none;
 }
 
 .focus-logo {
-    position: relative;
+    position: absolute;
+    /*inset-inline-start: 50%;*/
+    inset-block-start: 50%;
+    transform: translate(0,-50%);
+    z-index: 1;
     color: var(--logo-color);
     font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
     font-weight: 700;
-    line-height: 95.7px;
+    line-height: 82.5%;
+    text-shadow: 4px 4px 0 var(--logo-shadow-color);
 }
 
+
 .focus-logo__header {
-    margin-top: 66px;
+    /*margin-block-start: 66px;*/
     text-align: start;
     vertical-align: top;
-    text-shadow: 4px 4px 0 var(--logo-shadow-color);
 }
 
 .header__text {
     position: relative;
-    margin-top: 55px;
+    margin-block-end: 55px;
     font-weight: bold;
     line-height: 23.4px;
 }
@@ -144,11 +156,11 @@
 }
 
 .main__section {
-    margin-top: 50px;
+    margin-block-start: 50px;
 }
 
 .main__section:first-of-type {
-    margin-top: 0;
+    margin-block-start: 0;
 }
 
 .main__chapter-header {
@@ -162,26 +174,26 @@
 }
 
 .main__article-header {
-    margin-top: 20px;
+    margin-block-start: 20px;
     font-size: 18px;
 }
 
 .main__section:last-of-type .main__article-header {
-    margin-top: 0;
+    margin-block-start: 0;
 }
 
 .main__article-subheader {
     font-weight: normal;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-block-start: 20px;
+    margin-block-end: 10px;
 }
 
 .main__article-text {
-    margin-top: 10px;
+    margin-block-start: 10px;
 }
 
 .main__section__image-container {
-    margin-top: 10px;
+    margin-block-start: 10px;
     display: grid;
     row-gap: 10px;
 }
@@ -214,9 +226,31 @@
 }
 
 .focus-logo__footer {
-    text-shadow: 2px 2px 0 var(--logo-shadow-color);
     text-align: center;
     vertical-align: top;
-    padding-top: 7px;
-    padding-left: 2px;
+    padding-block-start: 7px;
+    padding-inline-start: 2px;
+}
+
+
+@media (min-width: 768px) {
+    .page {
+        padding: 0 var(--paddings-tablet);
+    }
+
+    .header, .footer {
+        margin: var(--paddings-tablet) 0;
+    }
+
+    .decorated-zone {
+        height: calc(100vh - calc(2 * var(--paddings-tablet)));
+    }
+
+    .header__theme-menu-list {
+        padding-block-start: 172px;
+    }
+
+    .focus-logo {
+        inset-inline-start: calc(-1 * var(--paddings-tablet));
+    }
 }

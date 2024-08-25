@@ -27,15 +27,15 @@
 
 .theme_dark .header__rec-label {
     position: absolute;
-    top: 0;
-    right: 0;
+    inset-block-start: 0;
+    inset-inline-end: 0;
 }
 
 .theme_dark .header__rec-label:before {
     content: "Rec";
     position: absolute;
-    top: 0;
-    right: 28px;
+    inset-block-start: 0;
+    inset-inline-end: 28px;
     color: var(--menu-color);
     text-transform: uppercase;
     line-height: 25px;
@@ -46,8 +46,8 @@
 .theme_dark .header__rec-label::after {
     content: "";
     position: absolute;
-    top: 8px;
-    right: 9px;
+    inset-block-start: 8px;
+    inset-inline-end: 9px;
     width: 9px;
     height: 9px;
     border: 1px solid var(--menu-color);
@@ -59,15 +59,15 @@
 @media (prefers-color-scheme: dark) {
     .theme_auto .header__rec-label {
         position: absolute;
-        top: 0;
-        right: 0;
+        inset-block-start: 0;
+        inset-inline-end: 0;
     }
 
     .theme_auto .header__rec-label:before {
         content: "Rec";
         position: absolute;
-        top: 0;
-        right: 28px;
+        inset-block-start: 0;
+        inset-inline-end: 28px;
         color: var(--menu-color);
         text-transform: uppercase;
         line-height: 25px;
@@ -78,8 +78,8 @@
     .theme_auto .header__rec-label::after {
         content: "";
         position: absolute;
-        top: 8px;
-        right: 9px;
+        inset-block-start: 8px;
+        inset-inline-end: 9px;
         width: 9px;
         height: 9px;
         border: 1px solid var(--menu-color);
