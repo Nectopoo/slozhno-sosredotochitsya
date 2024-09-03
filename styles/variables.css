@@ -18,4 +18,6 @@
 
     --paddings-mobile: 10px;
     --paddings-tablet: 20px;
+    --header-padding-mobile: 65px;
+    --header-padding-tablet: 173px;
 }

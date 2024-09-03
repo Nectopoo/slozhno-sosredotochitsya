@@ -9,7 +9,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 23.4px; /* 130% */
-    padding: 0 var(--paddings-mobile);
+    padding: var(--paddings-mobile) var(--paddings-mobile);
     position: relative;
     width: 100%;
 
@@ -39,17 +39,17 @@
     position: relative;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
     height: 100vh;
-    margin: var(--paddings-mobile) 0;
     flex: 1 0 auto;
 }
 
+.header {
+    padding: var(--header-padding-mobile) 0 calc(var(--header-padding-mobile) - 10px) 0;
+}
+
 .decorated-zone {
-    /*display: grid;*/
     position: relative;
     height: calc(100vh - calc(2 * var(--paddings-mobile)));
-    /*margin: 10px 0;*/
 }
 
 .decorated-zone::before {
@@ -80,7 +80,6 @@
 }
 
 .header__theme-menu-list {
-    padding-block-start: 65px;
     display: grid;
     justify-content: end;
     gap: 10px;
@@ -119,7 +118,6 @@
 
 .focus-logo {
     position: absolute;
-    /*inset-inline-start: 50%;*/
     inset-block-start: 50%;
     transform: translate(0,-50%);
     z-index: 1;
@@ -132,14 +130,17 @@
 
 
 .focus-logo__header {
-    /*margin-block-start: 66px;*/
     text-align: start;
     vertical-align: top;
 }
 
+.focus-logo__link {
+    text-decoration: none;
+    outline: none;
+}
+
 .header__text {
     position: relative;
-    margin-block-end: 55px;
     font-weight: bold;
     line-height: 23.4px;
 }
@@ -151,26 +152,15 @@
 
 .main {
     display: grid;
-    padding: 40px 0;
+    row-gap: 50px;
+    padding: 50px 0;
     position: relative;
-}
-
-.main__section {
-    margin-block-start: 50px;
-}
-
-.main__section:first-of-type {
-    margin-block-start: 0;
 }
 
 .main__chapter-header {
     font-weight: bold;
     font-size: 18px;
     color: var(--article-header-font-color);
-}
-
-.main__article {
-/* todo here */
 }
 
 .main__article-header {
@@ -199,6 +189,7 @@
 }
 
 .main__section__image {
+    display: inline-block;
     width: 100%;
 }
 
@@ -223,34 +214,189 @@
 
 .footer {
     justify-content: center;
+    align-items: center;
 }
 
 .focus-logo__footer {
-    text-align: center;
-    vertical-align: top;
-    padding-block-start: 7px;
-    padding-inline-start: 2px;
+    padding-block-start: 6px;
+    text-shadow: 2px 2px 0 var(--logo-shadow-color);
 }
 
 
 @media (min-width: 768px) {
     .page {
-        padding: 0 var(--paddings-tablet);
+        padding: var(--paddings-tablet) var(--paddings-tablet);
     }
 
-    .header, .footer {
-        margin: var(--paddings-tablet) 0;
+    .header {
+        padding: var(--header-padding-tablet) 0 calc(var(--header-padding-tablet) - 10px) 0;
     }
 
     .decorated-zone {
         height: calc(100vh - calc(2 * var(--paddings-tablet)));
     }
 
-    .header__theme-menu-list {
-        padding-block-start: 172px;
+    .focus-logo {
+        font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
     }
 
-    .focus-logo {
+    .focus-logo__header {
         inset-inline-start: calc(-1 * var(--paddings-tablet));
+    }
+
+    .header__text {
+        margin-inline-start: 50%;
+    }
+
+    .main {
+        row-gap: 80px;
+        padding: 80px 0;
+    }
+
+    .header-sidebar {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr 2fr;
+        grid-auto-rows: auto;
+    }
+
+    .header-sidebar .main__chapter-header {
+        grid-column: 1 / span 1;
+        grid-row: 1 / auto;
+    }
+
+    .header-sidebar .main__article {
+        grid-column: 2 / span 1;
+        grid-row: auto / span 1;
+    }
+
+    .main__article-header {
+        margin-block-start: 0;
+    }
+
+    .header-top {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr 2fr;
+        grid-auto-rows: auto;
+    }
+
+    .header-top .main__chapter-header {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    .header-top .main__article {
+        grid-column: 1 / span 2;
+        grid-row: auto / span 1;
+    }
+
+    .header-sidebar:nth-child(3) .main__chapter-header { //todo было header-sidebar.last
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 2;
+    }
+
+    .main__article-subheader {
+        margin-block-start: 0;
+    }
+
+    .main__section__image-container {
+        margin-block-start: 20px;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: minmax(min-content, 1fr) 1fr minmax(1fr, max-content);
+        grid-auto-flow: row;
+        justify-content: stretch;
+        justify-items: stretch;
+        align-items: center;
+    }
+
+    .main__section__image-contain {
+        object-fit: contain;
+        height: 100%;
+    }
+
+    .main__section__image-cover {
+        object-fit: cover;
+        height: 100%;
+    }
+
+    .main__section__image:first-child {
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 1;
+    }
+
+    .main__section__image:nth-child(2) {
+        grid-column: 3 / span 1;
+        grid-row: 1 / span 2;
+    }
+
+    .main__section__image:nth-child(3) {
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 2;
+    }
+
+    .main__section__image:nth-child(4) {
+        grid-column: 2 / span 1;
+        grid-row: 2 / span 1;
+    }
+
+    .main__section__image:last-child {
+        grid-column: 2 / span 2;
+        grid-row: 3 / span 1;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .page:before {
+        opacity: 1;
+    }
+
+    .header {
+        padding-block-start: 0;
+        padding-block-end: 114px;
+    }
+
+    .header__theme-menu-list {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: center;
+        align-items: start;
+        gap: 10px;
+    }
+
+    .header-sidebar {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .header-sidebar .main__article {
+        grid-column: 2 / span 2;
+        grid-row: auto / span 1;
+    }
+
+    .header-top {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .header-top .main__chapter-header {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    .header-top .main__article {
+        grid-column: span 1;
+        grid-row: 2 / span 1;
+    }
+
+    .header-sidebar:nth-child(3) .main__chapter-header {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 2;
+    }
+
+    .header-sidebar:nth-child(3) .main__article-header {
+        grid-column: 2 / span 2;
+        grid-row: 1 / span 1;
     }
 }
