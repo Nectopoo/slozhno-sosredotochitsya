@@ -20,4 +20,7 @@
     --paddings-tablet: 20px;
     --header-padding-mobile: 65px;
     --header-padding-tablet: 173px;
+    --min-block-size-mobile: 668px;
+    --min-block-size-tablet: 1024px;
+    --min-block-size-monitor: 768px;
 }

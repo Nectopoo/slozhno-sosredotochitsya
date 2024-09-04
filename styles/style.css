@@ -1,5 +1,4 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-@import url(fonts/fonts.css);
 
 .page {
     /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
@@ -11,7 +10,7 @@
     line-height: 23.4px; /* 130% */
     padding: var(--paddings-mobile) var(--paddings-mobile);
     position: relative;
-    width: 100%;
+    inline-size: 100%;
 
     background-color: var(--main-theme-color);
     color: var(--text-main-color);
@@ -33,23 +32,57 @@
     opacity: 0.5;
 }
 
+.header__rec-label {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+}
+
+.header__rec-label:before {
+    content: "Rec";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 28px;
+    color: var(--menu-color);
+    text-transform: uppercase;
+    line-height: 25px;
+    vertical-align: top;
+    text-align: center;
+}
+
+.header__rec-label::after {
+    content: "";
+    position: absolute;
+    inset-block-start: 8px;
+    inset-inline-end: 9px;
+    inline-size: 9px;
+    block-size: 9px;
+    border: 1px solid var(--menu-color);
+    background-color: var(--menu-color);
+    border-radius: 50%;
+    box-shadow: 0 0 5px 3px var(--menu-color);
+}
+
 .header, .footer {
     z-index: 10;
     display: flex;
     position: relative;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    block-size: 100vh;
     flex: 1 0 auto;
+    min-block-size: var(--min-block-size-mobile);
 }
 
 .header {
     padding: var(--header-padding-mobile) 0 calc(var(--header-padding-mobile) - 10px) 0;
 }
 
+
 .decorated-zone {
     position: relative;
-    height: calc(100vh - calc(2 * var(--paddings-mobile)));
+    block-size: calc(100vh - calc(2 * var(--paddings-mobile)));
+    min-block-size: calc(var(--min-block-size-mobile) - calc(2 * var(--paddings-mobile)));
 }
 
 .decorated-zone::before {
@@ -57,8 +90,8 @@
     position: absolute;
     border-block-start: solid 1px var(--menu-color);
     border-inline-end: solid 1px var(--menu-color);
-    width: 25px;
-    height: 25px;
+    inline-size: 25px;
+    block-size: 25px;
     inset-block-start: 0;
     inset-inline-end: 0;
 }
@@ -68,8 +101,8 @@
     position: absolute;
     border-block-end: solid 1px var(--menu-color);
     border-inline-start: solid 1px var(--menu-color);
-    width: 25px;
-    height: 25px;
+    inline-size: 25px;
+    block-size: 25px;
     inset-block-end: 0;
     inset-inline-start: 0;
 }
@@ -86,8 +119,8 @@
 }
 
 .header__theme-menu-button {
-    width: 70px;
-    height: 26px;
+    inline-size: 70px;
+    block-size: 26px;
     line-height: 18px;
     padding-block-end: 4.3px;
     text-transform: lowercase;
@@ -100,7 +133,7 @@
 }
 
 .header__theme-menu-button_active {
-    outline: solid 1px var(--menu-color);
+    outline: solid 1px currentColor;
     outline-offset: -1px;
     pointer-events: none;
 }
@@ -112,7 +145,7 @@
 
 .header__theme-menu-button:focus-visible {
     border-style: none;
-    border-block-end: solid 1px var(--menu-color);
+    border-block-end: solid 1px currentColor;
     outline: none;
 }
 
@@ -132,11 +165,6 @@
 .focus-logo__header {
     text-align: start;
     vertical-align: top;
-}
-
-.focus-logo__link {
-    text-decoration: none;
-    outline: none;
 }
 
 .header__text {
@@ -190,7 +218,7 @@
 
 .main__section__image {
     display: inline-block;
-    width: 100%;
+    inline-size: 100%;
 }
 
 .text_link {
@@ -207,9 +235,8 @@
 }
 
 .text_link:focus-visible {
-    box-sizing: content-box;
+    box-sizing: border-box;
     outline: 1px solid var(--text-main-color);
-    padding: -2px 1px 1px 1px;
 }
 
 .footer {
@@ -228,12 +255,17 @@
         padding: var(--paddings-tablet) var(--paddings-tablet);
     }
 
+    .header, .footer {
+        min-block-size: var(--min-block-size-tablet);
+    }
+
     .header {
         padding: var(--header-padding-tablet) 0 calc(var(--header-padding-tablet) - 10px) 0;
     }
 
     .decorated-zone {
-        height: calc(100vh - calc(2 * var(--paddings-tablet)));
+        block-size: calc(100vh - calc(2 * var(--paddings-tablet)));
+        min-block-size: calc(var(--min-block-size-tablet) - calc(2 * var(--paddings-tablet)));
     }
 
     .focus-logo {
@@ -291,7 +323,7 @@
         grid-row: auto / span 1;
     }
 
-    .header-sidebar:nth-child(3) .main__chapter-header { //todo было header-sidebar.last
+    .header-sidebar.last-element .main__chapter-header {
         grid-column: 1 / span 2;
         grid-row: 1 / span 2;
     }
@@ -312,39 +344,38 @@
         align-items: center;
     }
 
-    .main__section__image-contain {
-        object-fit: contain;
-        height: 100%;
-    }
-
-    .main__section__image-cover {
-        object-fit: cover;
-        height: 100%;
+    .main__section__image {
+        block-size: 100%;
     }
 
     .main__section__image:first-child {
         grid-column: 1 / span 2;
         grid-row: 1 / span 1;
+        object-fit: contain;
     }
 
     .main__section__image:nth-child(2) {
         grid-column: 3 / span 1;
         grid-row: 1 / span 2;
+        object-fit: cover;
     }
 
     .main__section__image:nth-child(3) {
         grid-column: 1 / span 1;
         grid-row: 2 / span 2;
+        object-fit: cover;
     }
 
     .main__section__image:nth-child(4) {
         grid-column: 2 / span 1;
         grid-row: 2 / span 1;
+        object-fit: contain;
     }
 
     .main__section__image:last-child {
         grid-column: 2 / span 2;
         grid-row: 3 / span 1;
+        object-fit: contain;
     }
 }
 
@@ -354,9 +385,17 @@
         opacity: 1;
     }
 
+    .header, .footer {
+        min-block-size: var(--min-block-size-monitor);
+    }
+
     .header {
         padding-block-start: 0;
         padding-block-end: 114px;
+    }
+
+    .decorated-zone {
+        min-block-size: calc(var(--min-block-size-monitor) - calc(2 * var(--paddings-tablet)));
     }
 
     .header__theme-menu-list {
@@ -390,12 +429,12 @@
         grid-row: 2 / span 1;
     }
 
-    .header-sidebar:nth-child(3) .main__chapter-header {
+    .header-sidebar.last-element .main__chapter-header {
         grid-column: 1 / span 1;
         grid-row: 1 / span 2;
     }
 
-    .header-sidebar:nth-child(3) .main__article-header {
+    .header-sidebar.last-element .main__article-header {
         grid-column: 2 / span 2;
         grid-row: 1 / span 1;
     }

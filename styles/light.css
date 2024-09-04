@@ -18,15 +18,12 @@
     --cover-image: url(../images/cover-image-light.png);
 }
 
-.page.theme_light  {
-  /* сохраните этот селектор в приведённом виде.
-    Так стили написанные ниже будут иметь больший вес,
-    чем стили в медиазапросе предпочтений пользователя
-  */
-}
+/*.theme_light .header__rec-label {*/
+/*    position: absolute;*/
+/*}*/
 
 .theme_light .header__rec-label {
-    position: absolute;
+    display: none;
 }
 
 @media (prefers-color-scheme: light) {
@@ -42,13 +39,9 @@
         --text-main-color: rgb(53, 52, 48);
         --main-theme-color: rgb(255, 241, 247);
         --cover-image: url(../images/cover-image-light.png);
-
-
     }
 
     .theme_auto .header__rec-label {
-        position: absolute;
-        inset-block-start: 0;
-        inset-inline-end: 0;
+        display: none;
     }
 }
