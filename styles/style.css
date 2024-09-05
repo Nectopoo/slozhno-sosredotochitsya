@@ -29,7 +29,6 @@
     inset-block-end: 0;
     inset-inline-start: 0;
     inset-inline-end: 0;
-    opacity: 0.5;
 }
 
 .header__rec-label {
@@ -379,10 +378,6 @@
 }
 
 @media (min-width: 1024px) {
-
-    .page:before {
-        opacity: 1;
-    }
 
     .header, .footer {
         min-block-size: var(--min-block-size-monitor);
